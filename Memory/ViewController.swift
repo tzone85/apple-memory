@@ -16,18 +16,19 @@ class ViewController: UIViewController {
             flipCountLabel.text = "Flips: \(flipCount)"
         }
     }
+    @IBOutlet var cardButtons: [UIButton]!
     
     @IBOutlet weak var flipCountLabel: UILabel!
     
     @IBAction func touchCard(_ sender: UIButton) {
         flipCount += 1
-        flipCard(withEmoji: "👻", on: sender)
+        if let cardNumber = cardButtons.index(of: sender){
+            print("cardNumber = \(cardNumber)")
+        } else {
+            print("Chosen card was not in cardButtons" )
+        }
     }
     
-    @IBAction func secondTouchCard(_ sender: UIButton) {
-        flipCount += 1
-        flipCard(withEmoji: "🎃", on: sender)
-    }
     func flipCard(withEmoji emoji: String, on button: UIButton){
         
         print("flipCard(withEmoji \(emoji))")
